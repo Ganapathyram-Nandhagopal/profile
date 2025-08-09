@@ -75,175 +75,113 @@
     <footer>&copy; ganapathyram_nandgagopal</footer>
 
     <script>
-    // Ensure consistent functionality across all devices
-    document.addEventListener('DOMContentLoaded', function() {
-        // Handle button interactions consistently
-        const button = document.querySelector('.scene button');
-        const nav = document.querySelector('nav');
-        const navLinks = document.querySelectorAll('nav a[href^="#"]');
-        
-        // Consistent button behavior
-        if (button) {
-            // Touch device support
-            button.addEventListener('touchstart', function() {
-                this.style.setProperty('--intent', '1');
-            });
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle "About Me" button - Simple and reliable approach
+    const aboutButton = document.querySelector('.cook');
+    if (aboutButton) {
+        aboutButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             
-            button.addEventListener('touchend', function() {
-                this.style.setProperty('--intent', '0');
-                this.style.setProperty('--active', '0');
-            });
-            
-            // Mouse support
-            button.addEventListener('mouseenter', function() {
-                this.style.setProperty('--intent', '1');
-            });
-            
-            button.addEventListener('mouseleave', function() {
-                this.style.setProperty('--intent', '0');
-            });
-            
-            button.addEventListener('mousedown', function() {
-                this.style.setProperty('--active', '1');
-            });
-            
-            button.addEventListener('mouseup', function() {
-                this.style.setProperty('--active', '0');
-            });
-        }
-        
-        // Handle "About Me" button functionality
-        const aboutButton = document.querySelector('.cook');
-        if (aboutButton) {
-            // Touch device support for About Me button
-            aboutButton.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                this.style.setProperty('--intent', '1');
-                this.style.transform = 'scale(0.95)';
-            });
-            
-            aboutButton.addEventListener('touchend', function(e) {
-                e.preventDefault();
-                this.style.setProperty('--intent', '0');
-                this.style.transform = 'scale(1)';
-                
-                // Add click functionality - scroll to about section
-                setTimeout(() => {
-                    const aboutSection = document.querySelector('#product');
-                    if (aboutSection) {
-                        aboutSection.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }, 100);
-            });
-            
-            // Mouse support for desktop
-            aboutButton.addEventListener('mouseenter', function() {
-                this.style.setProperty('--intent', '1');
-            });
-            
-            aboutButton.addEventListener('mouseleave', function() {
-                this.style.setProperty('--intent', '0');
-            });
-            
-            // Click handler for both touch and mouse
-            aboutButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                const aboutSection = document.querySelector('#product');
-                if (aboutSection) {
-                    aboutSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        }
-        
-        // Smooth scrolling for all devices
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+            // Scroll to About section
+            const aboutSection = document.querySelector('#product');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         });
         
-        // Ensure navigation expansion works on all devices
-        let lastScrollY = window.scrollY;
+        // Add touch feedback for mobile
+        aboutButton.addEventListener('touchstart', function(e) {
+            this.style.setProperty('--intent', '1');
+            this.style.transform = 'scale(0.95)';
+        });
         
-        function updateNavigation() {
-            const header = document.querySelector('header');
+        aboutButton.addEventListener('touchend', function(e) {
+            setTimeout(() => {
+                this.style.setProperty('--intent', '0');
+                this.style.transform = 'scale(1)';
+            }, 150);
+        });
+    }
+    
+    // Handle Contact Now button
+    const contactButton = document.querySelector('.scene button');
+    if (contactButton) {
+        contactButton.addEventListener('touchstart', function() {
+            this.style.setProperty('--intent', '1');
+        });
+        
+        contactButton.addEventListener('touchend', function() {
+            setTimeout(() => {
+                this.style.setProperty('--intent', '0');
+                this.style.setProperty('--active', '0');
+            }, 150);
+        });
+    }
+    
+    // Navigation links smooth scrolling
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Navigation expansion on scroll
+    function updateNavigation() {
+        const header = document.querySelector('header');
+        if (header) {
             const headerRect = header.getBoundingClientRect();
             
-            // Set expanded state based on scroll position
             if (headerRect.bottom <= 0) {
                 document.documentElement.style.setProperty('--expanded', '1');
             } else {
                 document.documentElement.style.setProperty('--expanded', '0');
             }
-            
-            lastScrollY = window.scrollY;
         }
+    }
+    
+    window.addEventListener('scroll', updateNavigation, { passive: true });
+    
+    // Section highlighting
+    const sections = document.querySelectorAll('main section');
+    const navItems = document.querySelectorAll('nav li');
+    
+    function updateActiveSection() {
+        let current = '';
         
-        // Use both scroll and intersection observer for maximum compatibility
-        window.addEventListener('scroll', updateNavigation, { passive: true });
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (window.scrollY >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
         
-        // Intersection Observer fallback
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.target.tagName === 'HEADER') {
-                        if (!entry.isIntersecting) {
-                            document.documentElement.style.setProperty('--expanded', '1');
-                        } else {
-                            document.documentElement.style.setProperty('--expanded', '0');
-                        }
-                    }
-                });
-            }, { threshold: 0 });
-            
-            const header = document.querySelector('header');
-            if (header) observer.observe(header);
-        }
-        
-        // Handle section highlighting
-        const sections = document.querySelectorAll('main section');
-        const navItems = document.querySelectorAll('nav li');
-        
-        function updateActiveSection() {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (window.scrollY >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navItems.forEach(item => {
-                const link = item.querySelector('a');
-                if (link && link.getAttribute('href') === `#${current}`) {
-                    item.style.setProperty('--active', '1');
-                } else {
-                    item.style.setProperty('--active', '0');
-                }
-            });
-        }
-        
-        window.addEventListener('scroll', updateActiveSection, { passive: true });
-        updateActiveSection(); // Initial call
-    });
-    </script>
+        navItems.forEach(item => {
+            const link = item.querySelector('a');
+            if (link && link.getAttribute('href') === `#${current}`) {
+                item.style.setProperty('--active', '1');
+            } else {
+                item.style.setProperty('--active', '0');
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    updateActiveSection();
+});
+</script>
 </body>
 </html>
