@@ -112,6 +112,55 @@
             });
         }
         
+        // Handle "About Me" button functionality
+        const aboutButton = document.querySelector('.cook');
+        if (aboutButton) {
+            // Touch device support for About Me button
+            aboutButton.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                this.style.setProperty('--intent', '1');
+                this.style.transform = 'scale(0.95)';
+            });
+            
+            aboutButton.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                this.style.setProperty('--intent', '0');
+                this.style.transform = 'scale(1)';
+                
+                // Add click functionality - scroll to about section
+                setTimeout(() => {
+                    const aboutSection = document.querySelector('#product');
+                    if (aboutSection) {
+                        aboutSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }, 100);
+            });
+            
+            // Mouse support for desktop
+            aboutButton.addEventListener('mouseenter', function() {
+                this.style.setProperty('--intent', '1');
+            });
+            
+            aboutButton.addEventListener('mouseleave', function() {
+                this.style.setProperty('--intent', '0');
+            });
+            
+            // Click handler for both touch and mouse
+            aboutButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                const aboutSection = document.querySelector('#product');
+                if (aboutSection) {
+                    aboutSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        }
+        
         // Smooth scrolling for all devices
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
