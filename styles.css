@@ -415,17 +415,12 @@ h1 span:last-of-type {
   --active: 1;
 }
 
-/* Responsive Design Improvements */
+/* Responsive Design - Maintaining All Functions Across Devices */
 @media (max-width: 768px) {
   main {
     width: 90%;
     margin-top: 2rem;
     padding: 0 1rem;
-  }
-
-  main section {
-    min-height: 80vh;
-    padding: 2rem 0;
   }
 
   h1 {
@@ -436,36 +431,43 @@ h1 span:last-of-type {
     font-size: clamp(1.5rem, 6vw, 3rem);
   }
 
+  /* Keep navigation functionality identical */
   nav {
-    position: fixed;
+    position: sticky;
     top: 1rem;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
     max-width: 400px;
+    /* Maintain all scroll animations */
   }
 
+  /* Preserve all navigation animations and functions */
   .nav__content {
-    grid-template-columns: auto 1fr auto;
-  }
-
-  .content {
-    padding: 0 0.5rem;
-  }
-
-  nav li {
-    width: auto;
-    min-width: 60px;
+    grid-template-columns: auto calc(var(--expanded) * (3 * var(--item))) auto;
+    transition: grid-template-columns 1s var(--elastic);
   }
 
   .cook {
-    padding: 0 0.5rem;
+    padding-left: calc(var(--expanded) * var(--gap));
+    transition: padding 1s var(--elastic);
     font-size: 12px;
   }
 
+  /* Keep button functionality identical */
   .scene button {
     padding: 0.75rem 1.5rem;
     font-size: 0.9rem;
+    /* All hover, focus, and animation properties remain the same */
+  }
+
+  .scene button:is(:hover, :focus-visible) {
+    --intent: 1;
+    outline: none;
+  }
+
+  .scene button:active {
+    --active: 1;
   }
 
   body::before {
@@ -488,11 +490,22 @@ h1 span:last-of-type {
   nav {
     height: 40px;
     font-size: 12px;
+    /* All navigation functions preserved */
   }
 
+  /* Maintain button functionality */
   .scene button {
     padding: 0.6rem 1.2rem;
     font-size: 0.8rem;
+  }
+
+  .scene button:is(:hover, :focus-visible) {
+    --intent: 1;
+    outline: none;
+  }
+
+  .scene button:active {
+    --active: 1;
   }
 
   h1 span:first-of-type {
@@ -500,40 +513,112 @@ h1 span:last-of-type {
   }
 }
 
-/* Tablet specific styles */
+/* Tablet - All functions identical to desktop */
 @media (min-width: 769px) and (max-width: 1024px) {
   main {
     width: 80%;
     max-width: 800px;
   }
 
-  main section {
-    min-height: 90vh;
-  }
-
   nav {
     top: 2rem;
+    /* All scroll-driven animations work identically */
+  }
+
+  .nav__content {
+    grid-template-columns: auto calc(var(--expanded) * (3 * var(--item))) auto;
+    transition: grid-template-columns 1s var(--elastic);
+  }
+
+  .cook {
+    padding-left: calc(var(--expanded) * var(--gap));
+    transition: padding 1s var(--elastic);
   }
 
   .scene button {
     padding: 1rem 2rem;
     font-size: 1rem;
   }
+
+  .scene button:is(:hover, :focus-visible) {
+    --intent: 1;
+    outline: none;
+  }
+
+  .scene button:active {
+    --active: 1;
+  }
 }
 
-/* Large desktop styles */
+/* Large desktop - All functions identical */
 @media (min-width: 1200px) {
   main {
     max-width: 900px;
   }
 
-  main section {
-    min-height: 100vh;
-  }
-
   .scene button {
     padding: 1.2rem 2.4rem;
     font-size: 1.1rem;
+  }
+
+  .scene button:is(:hover, :focus-visible) {
+    --intent: 1;
+    outline: none;
+  }
+
+  .scene button:active {
+    --active: 1;
+  }
+}
+
+/* Ensure touch devices have same hover functionality */
+@media (hover: none) and (pointer: coarse) {
+  /* Mobile touch devices */
+  .scene button:active {
+    --intent: 1;
+    --active: 1;
+  }
+
+  nav li a:active {
+    opacity: 1;
+  }
+
+  .cook:active {
+    --intent: 1;
+  }
+}
+
+/* Ensure all animations work on all devices */
+@media (prefers-reduced-motion: no-preference) {
+  .scene {
+    animation: spin calc(var(--speed) * 1s) infinite linear running;
+  }
+
+  .scene button::before {
+    transition: scale var(--transition);
+  }
+
+  .scene button::after {
+    transition: opacity var(--transition);
+  }
+}
+
+/* Fallback for devices that don't support scroll-driven animations */
+@supports not (animation-timeline: scroll()) {
+  nav {
+    --expanded: 1;
+  }
+
+  nav li {
+    opacity: 1;
+  }
+
+  li a {
+    opacity: 0.7;
+  }
+
+  li:is(:hover, :focus-visible, :active) a {
+    opacity: 1;
   }
 }
 
