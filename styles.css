@@ -197,6 +197,10 @@ footer {
   cursor: pointer;
   position: relative;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+  min-height: 44px; /* Ensure minimum touch target size */
+  min-width: 44px;
 }
 
 .cook:is(:hover, :focus-visible, :active) {
