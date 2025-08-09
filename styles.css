@@ -196,21 +196,6 @@ footer {
   z-index: 2;
   cursor: pointer;
   position: relative;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-  user-select: none;
-  min-height: 44px; /* Ensure minimum touch target size */
-  min-width: 44px;
-}
-
-.cook:is(:hover, :focus-visible, :active) {
-  --intent: 1;
-}
-
-.cook:active {
-  --intent: 1;
-  transform: scale(0.95);
-  transition: transform 0.1s ease;
 }
 
 .cook::before {
@@ -586,14 +571,19 @@ h1 span:last-of-type {
   }
 }
 
-/* Ensure touch devices have proper button functionality */
+/* Ensure touch devices have same hover functionality */
 @media (hover: none) and (pointer: coarse) {
-  .cook:active {
+  /* Mobile touch devices */
+  .scene button:active {
     --intent: 1;
-    transform: scale(0.95);
+    --active: 1;
   }
 
-  .cook:focus {
+  nav li a:active {
+    opacity: 1;
+  }
+
+  .cook:active {
     --intent: 1;
   }
 }
