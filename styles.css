@@ -638,3 +638,140 @@ main section {
   align-items: center;
   text-align: center;
 }
+
+/* Social Media Navigation Styles */
+.social-main {
+  width: 66ch;
+  max-width: 100%;
+  margin: 2rem auto; /* Centered horizontally */
+  display: flex; /* Use flexbox to center the nav */
+  justify-content: center; /* Center the nav horizontally */
+}
+
+.social-main nav {
+  position: relative;
+  /* No need for display: inline-block here, flex handles it */
+}
+
+.social-main ul {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-auto-flow: column;
+  list-style-type: none;
+  /* Initial state: first column auto, others collapsed to 0fr */
+  grid-template-columns: auto repeat(4, 0fr);
+  transition: grid-template-columns 0.5s var(--elastic); /* Use the elastic transition */
+  align-items: center;
+  gap: 0.5rem; /* Consistent gap between items */
+}
+
+.social-main li {
+  display: grid;
+  place-items: center; /* Center content horizontally and vertically */
+  height: 48px; /* Consistent height */
+  z-index: calc(5 - var(--index)); /* Ensure proper stacking */
+  overflow: hidden; /* Crucial for collapsing effect */
+}
+
+.social-main li:first-child {
+  /* No specific width, auto from content */
+}
+
+.social-main li:nth-of-type(n + 2) {
+  /* These are the expanding social links */
+  opacity: var(--social-active, 0); /* Control visibility of the entire li */
+  transition: opacity 0.3s ease 0.1s; /* Delay opacity for smoother effect */
+}
+
+.social-main a {
+  background: hsl(0 0% 60% / 0.18);
+  display: flex; /* Use flex for content inside a */
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  color: hsl(0 0% 90%);
+  font-size: 0.875rem;
+  font-weight: 400;
+  backdrop-filter: blur(40px);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border: 1px solid hsl(0 0% 100% / 0.1);
+  white-space: nowrap;
+  height: 100%;
+  width: 100%; /* Fill the grid cell */
+  max-width: 130px; /* Limit max width of each expanded item */
+  min-width: 48px; /* Minimum width for icon-only state */
+}
+
+.social-main a:visited {
+  color: hsl(0 0% 90%);
+}
+
+.social-main svg {
+  height: 20px;
+  width: 20px;
+  fill: currentColor;
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+
+.social-main span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* First item (Socials button) styling */
+.social-main li:first-child a {
+  background: var(--accent);
+  color: hsl(0 0% 10%);
+  font-weight: 500;
+}
+
+.social-main li:first-child a:hover {
+  background: hsl(40 100% 80%);
+}
+
+/* Trigger expansion on hover or focus */
+.social-main nav:is(:hover, :focus-within) {
+  --social-active: 1;
+}
+
+.social-main nav:is(:hover, :focus-within) ul {
+  /* Expanded state: first column auto, others take equal fractional space */
+  grid-template-columns: auto repeat(4, 1fr);
+}
+
+/* Responsive adjustments for social navigation */
+@media (max-width: 768px) {
+  .social-main ul {
+    grid-template-columns: auto repeat(4, 0fr); /* Collapse initially */
+  }
+  .social-main nav:is(:hover, :focus-within) ul {
+    grid-template-columns: auto repeat(4, 1fr); /* Expand */
+  }
+  .social-main a {
+    max-width: 100px; /* Smaller max-width for tablet */
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  .social-main svg {
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-main a {
+    max-width: 80px; /* Even smaller max-width for mobile */
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+  .social-main svg {
+    height: 16px;
+  }
+  .social-main span {
+    gap: 0.3rem;
+  }
+}
