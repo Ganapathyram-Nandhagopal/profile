@@ -3,75 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr. Ganapathyram N - ERPNext Consultant</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
-    <link href="https://assets.codepen.io/605876/GeistVF.ttf" rel="preload" as="font" type="font/truetype" crossorigin>
+    <title>Portfolio Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <header>
-        <h1>
-            <span>Mr.</span>
-            <span>Ganapathyram N</span>
-        </h1>
-        <p>Hustle🚀➤Meditate🍃➤Dominate/Empire✨</p>
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="#" class="nav-logo">John Doe</a>
+            </div>
+
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+                    <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
     </header>
 
-    <nav>
-        <div class="nav__content">
-            <a href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                    <path fill-rule="evenodd" d="M10.5 3.798v5.02a3 3 0 0 1-.879 2.121l-2.377 2.377a9.845 9.845 0 0 1 5.091 1.013 8.315 8.315 0 0 0 5.713.636l.285-.071-3.954-3.955a3 3 0 0 1-.879-2.121v-5.02a23.614 23.614 0 0 0-3 0Zm4.5.138a.75.75 0 0 0 .093-1.495A24.837 24.837 0 0 0 12 2.25a25.048 25.048 0 0 0-3.093.191A.75.75 0 0 0 9 3.936v4.882a1.5 1.5 0 0 1-.44 1.06l-6.293 6.294c-1.62 1.621-.903 4.475 1.471 4.88 2.686.46 5.447.698 8.262.698 2.816 0 5.576-.239 8.262-.697 2.373-.406 3.092-3.26 1.47-4.881L15.44 9.879A1.5 1.5 0 0 1 15 8.818V3.936Z" clip-rule="evenodd" />
-                </svg>
-            </a>
-            <ul class="content">
-                <li>
-                    <a href="#product"><span>About</span></a>
-                </li>
-                <li>
-                    <a href="#price"><span>Service</span></a>
-                </li>
-                <li>
-                    <a href="#follow"><span>Contact</span></a>
-                </li>
-            </ul>
-            <button class="cook">
-                <span><span>About&nbsp;</span>Me</span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                </svg>
-            </button>
-        </div>
-    </nav>
+    <main class="l-main">
+        <section class="home" id="home">
+            <div class="home-container bd-grid">
+                <h1 class="home-title"><span>HE</span><br>LLO</h1>
 
-    <main>
-        <section id="product">
-            <h2>About</h2>
-            <p>
-                I graduated with a degree in Commerce, specializing in Computer Applications 🎓. This laid the foundation for my journey into the world of ERP solutions. I initially kick-started my career as an ERPNext Implementation Consultant 🛠️, where I gained invaluable experience and insight into the ERP landscape.<br><br>
-                With comprehensive knowledge and hands-on experience in ERPNext Implementation, Business Development 📈, Project Management 📊, and Consulting 💡, I have the skill set to deliver high-quality ERP solutions tailored to meet the unique needs of each client.<br><br>
-                At present, my role is laser-focused on spearheading business development initiatives 🚀. I am keenly concentrated on the Manufacturing 🏭, Service 📞, and Healthcare 🏥 sectors, where I aim to implement ERP solutions that streamline operations, enhance productivity, and drive business growth.<br><br>
-                My multidisciplinary expertise ensures that I can offer end-to-end solutions, right from project inception to successful implementation 🌐.
-            </p>
+                <div class="home-scroll">
+                    <a href="#about" class="home-scroll-link"><i class='bx bx-up-arrow-alt' ></i>SCROLL DOWN</a>
+                </div>
+
+                <img src="https://i.postimg.cc/x8js2KnT/perfil.png" alt="John Doe" class="home-img">
+            </div>
+        </section>
+    
+
+        <section class="about section" id="about">
+            <h2 class="section-title">About</h2>
+
+            <div class="about-container bd-grid">
+                <div class="about-img">
+                    <img src="https://i.postimg.cc/x8js2KnT/perfil.png" alt="John Doe image">
+                </div>
+
+                <div>
+                    <h2 class="about-subtitle">I'm John Doe</h2>
+                    <span class="about-profession">Web Designer</span>
+                    <p class="about-text">As a passionate web designer, I thrive on creating visually appealing and user-friendly websites. My journey in web design began with a fascination for how design can enhance user experience</p>
+
+                    <div class="about-social">
+                        <a href="#" class="about-social-icon"><i class='bx bxl-linkedin'></i></a>
+                        <a href="#" class="about-social-icon"><i class='bx bxl-github'></i></a>
+                        <a href="#" class="about-social-icon"><i class='bx bxl-instagram'></i></a>
+                    </div>
+                </div>   
+            </div>
         </section>
 
-        <section id="price">
-            <h2>Service</h2>
-            <p>
-                Business Consulting • ERPNext Implementation • SaaS Development • Digital Branding
-            </p>
-        </section>
+        <section class="skills section" id="skills">
+            <h2 class="section-title">Skills</h2>
 
-        <section id="follow">
-            <p>Sharpen your knives. Prep starts Fall '24</p>
-            <div class="scene">
-                <div class="button-wrap">
-                    <button>Contact Now!</button>
+            <div class="skills-container bd-grid">
+                <div class="skills-box">
+                    <h3 class="skils-subtitle">Development</h3>
+
+                    <span class="skills-name">HTML</span>
+                    <span class="skills-name">CSS</span>
+                    <span class="skills-name">JAVASCRIPT</span>
+                    <span class="skills-name">SCSS</span>
+                    <span class="skills-name">REACT</span>
+                    <span class="skills-name">VUE</span>
+
+                    <h3 class="skils-subtitle">Design</h3>
+
+                    <span class="skills-name">FIGMA</span>
+                    <span class="skills-name">ADOBE XD</span>
+                    <span class="skills-name">PHOTOSHOP</span>
+                </div>
+
+                <div class="skills-img">
+                    <img src="https://i.postimg.cc/fL7Z1bFw/skill.jpg" alt="skills image">
                 </div>
             </div>
         </section>
+
+        <section class="portfolio section" id="portfolio">
+            <h2 class="section-title">Portfolio</h2>
+
+            <div class="portfolio-container bd-grid">
+                <div class="portfolio-img">
+                    <img src="https://i.postimg.cc/c4LgMqgK/work1.jpg" alt="work image">
+
+                    <div class="portfolio-link">
+                        <a href="#" class="portfolio-link-name">View Details</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-img">
+                    <img src="https://i.postimg.cc/CxZRXj4S/work2.jpg" alt="work image">
+
+                    <div class="portfolio-link">
+                        <a href="#" class="portfolio-link-name">View Details</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-img">
+                    <img src="https://i.postimg.cc/wjS1p7WJ/work3.jpg" alt="work image">
+
+                    <div class="portfolio-link">
+                        <a href="#" class="portfolio-link-name">View Details</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-img">
+                    <img src="https://i.postimg.cc/N0m5fBVn/work4.jpg" alt="work image">
+
+                    <div class="portfolio-link">
+                        <a href="#" class="portfolio-link-name">View Details</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-img">
+                    <img src="https://i.postimg.cc/vHTTxWkf/work5.jpg" alt="work image">
+
+                    <div class="portfolio-link">
+                        <a href="#" class="portfolio-link-name">View Details</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-img">
+                    <img src="https://i.postimg.cc/cHT1rHcF/work6.jpg" alt="work image">
+
+                    <div class="portfolio-link">
+                        <a href="#" class="portfolio-link-name">View Details</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="contact section" id="contact">
+            <h2 class="section-title">Contact</h2>
+
+            <div class="contact-container bd-grid">
+                <div class="contact-info">
+                    <h3 class="contact-subtitle">EMAIL</h3>
+                    <span class="contact-text">info.mail.com</span>
+
+                    <h3 class="contact-subtitle">PHONE</h3>
+                    <span class="contact-text">+20 999-999</span>
+
+                    <h3 class="contact-subtitle">ADDRESS</h3>
+                    <span class="contact-text">Sacramento, California, USA</span>
+                </div>
+
+                <form action="" class="contact-form">
+                    <div class="contact-inputs">
+                        <input type="text" placeholder="Name" class="contact-input">
+                        <input type="email" placeholder="Email" class="contact-input">
+                    </div>
+
+                    <textarea name="" id="" cols="0" rows="10" class="contact-input"></textarea>
+
+                    <input type="submit" value="Send" class="contact-button">
+                </form>
+            </div>
+        </section>
+
     </main>
 
-    <footer>&copy; ganapathyram_nandgagopal</footer>
+    <footer class="footer section">
+        <div class="footer-container bd-grid">
+            <div class="footer-data">
+                <h2 class="footer-title">John Doe</h2>
+                <p class="footer-text">I'm John Doe and this is my personal website</p>
+            </div>
+
+            <div class="footer-data">
+                <h2 class="footer-title">John Doe</h2>
+                <ul>
+                    <li><a href="#home" class="footer-link">Home</a></li>
+                    <li><a href="#about" class="footer-link">About</a></li>
+                    <li><a href="#skills" class="footer-link">Skills</a></li>
+                    <li><a href="#portfolio" class="footer-link">Portfolio</a></li>
+                    <li><a href="#contact" class="footer-link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-data">
+                <h2 class="footer-title">FOLLOW</h2>
+
+                <a href="#" class="footer-social"><i class='bx bxl-instagram'></i></a>
+                <a href="#" class="footer-social"><i class='bx bxl-facebook'></i></a>
+                <a href="#" class="footer-social"><i class='bx bxl-twitter'></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="main.js"></script>
 </body>
 </html>
