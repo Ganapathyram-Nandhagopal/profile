@@ -1,68 +1,277 @@
-// Activating Mobile Menu
-const showMenu = (toggleId, navId) => {
-    const toggle = document.getElementById(toggleId);
-    const nav = document.getElementById(navId);
+import gsap from 'https://cdn.skypack.dev/gsap@3.12.0'
+import { ScrollTrigger } from 'https://cdn.skypack.dev/gsap@3.12.0/ScrollTrigger'
+import { Pane } from 'https://cdn.skypack.dev/tweakpane@4.0.4'
 
-    if (toggle && nav) {
-        toggle.addEventListener('click', () => {
-            nav.classList.toggle('show');
-        });
+let tl
+let configureTimeline
+
+const ctrl = new Pane({
+  title: 'Config',
+  expanded: true,
+})
+
+const scroller = document.querySelector('.scroller')
+const list = scroller.querySelector('div')
+const bar = scroller.querySelector('.scroller__bar')
+const track = scroller.querySelector('.bar__track')
+const thumb = bar.querySelector('.bar__thumb')
+const styles = scroller.querySelector('style')
+
+const config = {
+  theme: 'dark',
+  show: true,
+  radius: 32,
+  scrollPadding: 60,
+  stroke: 5,
+  inset: 6,
+  trail: 20,
+  thumb: 70,
+  finish: 5,
+  alpha: 0.9,
+  track: 0,
+  color: '#f85922',
+  cornerLength: 0,
+  offsetCorner: -50,
+  offsetEnd: 30,
+}
+
+/**
+ * Set up a ResizeObserver that syncs the SVG path and viewBox
+ * with the size of the scroller. If you have a static sized scroller
+ * and radius, etc. You can take a snapshot of it and use it over and over.
+ * The ResizeObserver is mainly for demo purposes so you can make what you
+ * want.
+ * */
+let frames = []
+const syncBar = (scrollerBar) => {
+  const mid = config.radius
+  const innerRad = Math.max(
+    0,
+    config.radius - (config.inset + config.stroke * 0.5)
+  )
+  const padTop = config.inset + config.stroke * 0.5
+  const padLeft = config.radius * 2 - padTop
+  bar.setAttribute(
+    'viewBox',
+    `0 0 ${config.radius * 2} ${scrollerBar.target.offsetHeight}`
+  )
+  scroller.style.setProperty('--stroke-width', config.stroke)
+  let d = `
+  M${mid - config.trail},${padTop}
+    ${innerRad === 0 ? '' : `L${mid},${padTop}`}
+    ${
+      innerRad === 0
+        ? `L${padLeft},${padTop}`
+        : `a${innerRad},${innerRad} 0 0 1 ${innerRad} ${innerRad}`
+    }`
+  thumb.setAttribute('d', d)
+  const cornerLength = Math.ceil(thumb.getTotalLength())
+  config.cornerLength = cornerLength
+  d = `
+    M${mid - config.trail},${padTop}
+    ${innerRad === 0 ? '' : `L${mid},${padTop}`}
+    ${
+      innerRad === 0
+        ? `L${padLeft},${padTop}`
+        : `a${innerRad},${innerRad} 0 0 1 ${innerRad} ${innerRad}`
     }
+    L${padLeft},${
+    scrollerBar.target.offsetHeight -
+    (config.inset + config.stroke * 0.5 + innerRad)
+  }
+    ${
+      innerRad === 0
+        ? `L${padLeft},${
+            scrollerBar.target.offsetHeight -
+            (config.inset + config.stroke * 0.5)
+          }`
+        : `a${innerRad},${innerRad} 0 0 1 ${-innerRad} ${innerRad}`
+    }
+    L${mid - config.trail},${
+    scrollerBar.target.offsetHeight - (config.inset + config.stroke * 0.5)
+  }
+  `
+  thumb.setAttribute('d', d)
+  track.setAttribute('d', d)
+  scroller.style.setProperty(
+    '--track-length',
+    Math.ceil(track.getTotalLength())
+  )
+  scroller.style.setProperty('--track-start', cornerLength)
+  scroller.style.setProperty('--start', config.thumb * 2 + cornerLength)
+  scroller.style.setProperty(
+    '--destination',
+    Math.ceil(track.getTotalLength()) - cornerLength + config.thumb
+  )
+  frames = [
+    [0, config.thumb - config.finish - config.offsetEnd],
+    [
+      Math.floor(
+        (config.scrollPadding / (list.scrollHeight - scroller.offsetHeight)) *
+          100
+      ),
+      (cornerLength + config.offsetCorner) * -1,
+    ],
+    [
+      100 -
+        Math.floor(
+          (config.scrollPadding / (list.scrollHeight - scroller.offsetHeight)) *
+            100
+        ),
+      (Math.floor(track.getTotalLength()) -
+        cornerLength -
+        config.thumb -
+        config.offsetCorner) *
+        -1,
+    ],
+    [
+      100,
+      (Math.floor(track.getTotalLength()) - config.finish - config.offsetEnd) *
+        -1,
+    ],
+  ]
+  styles.innerHTML = `
+    @keyframes scroll {
+      ${frames[0][0]}% { stroke-dashoffset: ${frames[0][1]};}
+      ${frames[1][0]}% { stroke-dashoffset: ${frames[1][1]};}
+      ${frames[2][0]}% { stroke-dashoffset: ${frames[2][1]};}
+      ${frames[3][0]}% { stroke-dashoffset: ${frames[3][1]};}
+    }
+  `
 }
-showMenu('nav-toggle', 'nav-menu');
 
-// Toggling Menu by clicking in mobile menu links
-const navLink = document.querySelectorAll('.nav-link');
+const resizeObserver = new ResizeObserver((entries) => {
+  for (const entry of entries) {
+    syncBar(entry)
+    update()
+    if (configureTimeline && !CSS.supports('animation-timeline: scroll()'))
+      configureTimeline()
+  }
+})
+resizeObserver.observe(scroller)
 
-function linkAction() {
-    navLink.forEach(n => n.classList.remove('active'));
-    this.classList.add('active');
-
-    const navMenu = document.getElementById('nav-menu');
-    navMenu.classList.remove('show');
-}
-navLink.forEach(n => n.addEventListener('click', linkAction));
-
-// Changing Active Menu section while scrolling
-const sections = document.querySelectorAll('section[id]');
-window.addEventListener('scroll', scrollActive);
-
-function scrollActive() {
-    const scrollY = window.pageYOffset;
-
-    sections.forEach(current => {
-        const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 50;
-        const sectionId = current.getAttribute('id');
-
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.add('active');
-        } else {
-            document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.remove('active');
-        }
-    });
+// if (config.show) document.documentElement.toggleAttribute('data-rounded-scroll')
+// const configFolder = CTRL.addFolder('Config')
+const update = () => {
+  document.documentElement.dataset.theme = config.theme
+  document.documentElement.dataset.roundedScroll = config.show
+  scroller.style.setProperty('--radius', config.radius)
+  scroller.style.setProperty('--padding', config.scrollPadding)
+  scroller.style.setProperty('--color', config.color)
+  scroller.style.setProperty('--thumb-size', config.thumb)
+  scroller.style.setProperty('--bar-alpha', config.alpha)
+  scroller.style.setProperty('--track-alpha', config.track)
+  scroller.style.setProperty(
+    '--destination',
+    Math.ceil(track.getTotalLength()) -
+      ((Math.ceil(track.getTotalLength()) - scroller.offsetHeight) * 0.5 +
+        config.inset)
+  )
+  scroller.style.setProperty('--start', config.thumb * 2)
+  syncBar({ target: list })
 }
 
-// Scroll Reveal Settings
-const sr = ScrollReveal({
-    origin: 'top',
-    distance: '80px',
-    duration: 2000,
-    reset: true
-});
-sr.reveal('.home-title', {});
-sr.reveal('.home-scroll', { delay: 200 });
-sr.reveal('.home-img', { origin: 'right', delay: 400 });
-sr.reveal('.about-img', { delay: 500 });
-sr.reveal('.about-subtitle', { delay: 300 });
-sr.reveal('.about-profession', { delay: 400 });
-sr.reveal('.about-text', { delay: 500 });
-sr.reveal('.about-social-icon', { delay: 600, interval: 200 });
-sr.reveal('.skills-subtitle', {});
-sr.reveal('.skills-name', { distance: '20px', delay: 50, interval: 100 });
-sr.reveal('.skills-img', { delay: 400 });
-sr.reveal('.portfolio-img', { interval: 200 });
-sr.reveal('.contact-subtitle', {});
-sr.reveal('.contact-text', { interval: 200 });
-sr.reveal('.contact-input', { delay: 400 });
-sr.reveal('.contact-button', { delay: 600 });
+const setup = ctrl.addFolder({ title: 'setup', expanded: false })
+setup.addBinding(config, 'radius', {
+  min: 2,
+  max: 64,
+  step: 1,
+  label: 'Radius',
+})
+setup.addBinding(config, 'scrollPadding', {
+  min: 10,
+  max: 200,
+  step: 1,
+  label: 'Padding',
+})
+setup.addBinding(config, 'stroke', {
+  min: 1,
+  max: 20,
+  step: 1,
+  label: 'Stroke',
+})
+setup.addBinding(config, 'inset', {
+  min: 0,
+  max: 20,
+  step: 1,
+  label: 'Inset',
+})
+setup.addBinding(config, 'trail', {
+  min: 0,
+  max: 100,
+  step: 1,
+  label: 'Trail',
+})
+setup.addBinding(config, 'thumb', {
+  min: 20,
+  max: 200,
+  step: 1,
+  label: 'Thumb',
+})
+setup.addBinding(config, 'thumb', {
+  min: 5,
+  max: 50,
+  step: 1,
+  label: 'Finish',
+})
+setup.addBinding(config, 'alpha', {
+  min: 0.1,
+  max: 1,
+  step: 0.01,
+  label: 'Thumb Alpha',
+})
+setup.addBinding(config, 'track', {
+  min: 0.1,
+  max: 1,
+  step: 0.01,
+  label: 'Track Alpha',
+})
+setup.addBinding(config, 'offsetCorner', {
+  min: -50,
+  max: 50,
+  step: 1,
+  label: 'Offset start',
+})
+setup.addBinding(config, 'offsetEnd', {
+  min: -50,
+  max: 50,
+  step: 1,
+  label: 'Offset end',
+})
+setup.addBinding(config, 'color', {
+  label: 'Color',
+})
+ctrl.addBinding(config, 'show', {
+  label: 'Enable',
+})
+ctrl.addBinding(config, 'theme', {
+  label: 'Theme',
+  options: {
+    System: 'system',
+    Light: 'light',
+    Dark: 'dark',
+  },
+})
+ctrl.on('change', update)
+
+syncBar({ target: scroller })
+if (!CSS.supports('(animation-timeline: scroll())')) {
+  configureTimeline = () => {
+    if (tl) tl.kill()
+    tl = gsap.to('.bar__thumb', {
+      scrollTrigger: {
+        scroller: list,
+        scrub: true,
+      },
+      ease: 'none',
+      keyframes: {
+        [`${frames[0][0]}`]: { strokeDashoffset: frames[0][1] },
+        [`${frames[1][0]}`]: { strokeDashoffset: frames[1][1] },
+        [`${frames[2][0]}`]: { strokeDashoffset: frames[2][1] },
+        [`${frames[3][0]}`]: { strokeDashoffset: frames[3][1] },
+      },
+    })
+  }
+  gsap.registerPlugin(ScrollTrigger)
+  configureTimeline()
+}
