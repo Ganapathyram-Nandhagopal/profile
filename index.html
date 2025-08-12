@@ -1,169 +1,146 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Landing Page</title>
-    <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
-<body>
-    <header class="l-header">
-        <nav class="nav bd-grid">
-            <div>
-                <a href="#" class="nav-logo">John Doe</a>
-            </div>
-            <div class="nav-menu" id="nav-menu">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
-                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-                    <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </div>
-            <div class="nav-toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
-            </div>
-        </nav>
-    </header>
-
-    <main class="l-main">
-        <!-- Home Section -->
-        <section class="home" id="home">
-            <div class="home-container bd-grid">
-                <h1 class="home-title"><span>HE</span><br>LLO</h1>
-                <div class="home-scroll">
-                    <a href="#about" class="home-scroll-link"><i class='bx bx-up-arrow-alt'></i>SCROLL DOWN</a>
-                </div>
-                <img src="https://i.postimg.cc/x8js2KnT/perfil.png" alt="John Doe" class="home-img">
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section class="about section" id="about">
-            <h2 class="section-title">About</h2>
-            <div class="about-container bd-grid">
-                <div class="about-img">
-                    <img src="https://i.postimg.cc/x8js2KnT/perfil.png" alt="John Doe image">
-                </div>
-                <div>
-                    <h2 class="about-subtitle">I'm John Doe</h2>
-                    <span class="about-profession">Web Designer</span>
-                    <p class="about-text">As a passionate web designer, I thrive on creating visually appealing and user-friendly websites. My journey in web design began with a fascination for how design can enhance user experience.</p>
-                    <div class="about-social">
-                        <a href="#" class="about-social-icon"><i class='bx bxl-linkedin'></i></a>
-                        <a href="#" class="about-social-icon"><i class='bx bxl-github'></i></a>
-                        <a href="#" class="about-social-icon"><i class='bx bxl-instagram'></i></a>
-                    </div>
-                </div>   
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section class="skills section" id="skills">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-container bd-grid">
-                <div class="skills-box">
-                    <h3 class="skills-subtitle">Development</h3>
-                    <span class="skills-name">HTML</span>
-                    <span class="skills-name">CSS</span>
-                    <span class="skills-name">JAVASCRIPT</span>
-                    <span class="skills-name">SCSS</span>
-                    <span class="skills-name">REACT</span>
-                    <span class="skills-name">VUE</span>
-                    <h3 class="skills-subtitle">Design</h3>
-                    <span class="skills-name">FIGMA</span>
-                    <span class="skills-name">ADOBE XD</span>
-                    <span class="skills-name">PHOTOSHOP</span>
-                </div>
-                <div class="skills-img">
-                    <img src="https://i.postimg.cc/fL7Z1bFw/skill.jpg" alt="skills image">
-                </div>
-            </div>
-        </section>
-
-        <!-- Portfolio Section -->
-        <section class="portfolio section" id="portfolio">
-            <h2 class="section-title">Portfolio</h2>
-            <div class="portfolio-container bd-grid">
-                <div class="portfolio-img">
-                    <img src="https://i.postimg.cc/c4LgMqgK/work1.jpg" alt="work image">
-                    <div class="portfolio-link"><a href="#" class="portfolio-link-name">View Details</a></div>
-                </div>
-                <div class="portfolio-img">
-                    <img src="https://i.postimg.cc/CxZRXj4S/work2.jpg" alt="work image">
-                    <div class="portfolio-link"><a href="#" class="portfolio-link-name">View Details</a></div>
-                </div>
-                <div class="portfolio-img">
-                    <img src="https://i.postimg.cc/wjS1p7WJ/work3.jpg" alt="work image">
-                    <div class="portfolio-link"><a href="#" class="portfolio-link-name">View Details</a></div>
-                </div>
-                <div class="portfolio-img">
-                    <img src="https://i.postimg.cc/N0m5fBVn/work4.jpg" alt="work image">
-                    <div class="portfolio-link"><a href="#" class="portfolio-link-name">View Details</a></div>
-                </div>
-                <div class="portfolio-img">
-                    <img src="https://i.postimg.cc/vHTTxWkf/work5.jpg" alt="work image">
-                    <div class="portfolio-link"><a href="#" class="portfolio-link-name">View Details</a></div>
-                </div>
-                <div class="portfolio-img">
-                    <img src="https://i.postimg.cc/cHT1rHcF/work6.jpg" alt="work image">
-                    <div class="portfolio-link"><a href="#" class="portfolio-link-name">View Details</a></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="contact section" id="contact">
-            <h2 class="section-title">Contact</h2>
-            <div class="contact-container bd-grid">
-                <div class="contact-info">
-                    <h3 class="contact-subtitle">EMAIL</h3>
-                    <span class="contact-text">info.mail.com</span>
-                    <h3 class="contact-subtitle">PHONE</h3>
-                    <span class="contact-text">+20 999-999</span>
-                    <h3 class="contact-subtitle">ADDRESS</h3>
-                    <span class="contact-text">Sacramento, California, USA</span>
-                </div>
-                <form action="" class="contact-form">
-                    <div class="contact-inputs">
-                        <input type="text" placeholder="Name" class="contact-input">
-                        <input type="email" placeholder="Email" class="contact-input">
-                    </div>
-                    <textarea name="" id="" cols="0" rows="10" class="contact-input"></textarea>
-                    <input type="submit" value="Send" class="contact-button">
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer section">
-        <div class="footer-container bd-grid">
-            <div class="footer-data">
-                <h2 class="footer-title">John Doe</h2>
-                <p class="footer-text">I'm John Doe and this is my personal website</p>
-            </div>
-            <div class="footer-data">
-                <h2 class="footer-title">Links</h2>
-                <ul>
-                    <li><a href="#home" class="footer-link">Home</a></li>
-                    <li><a href="#about" class="footer-link">About</a></li>
-                    <li><a href="#skills" class="footer-link">Skills</a></li>
-                    <li><a href="#portfolio" class="footer-link">Portfolio</a></li>
-                    <li><a href="#contact" class="footer-link">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-data">
-                <h2 class="footer-title">Follow</h2>
-                <a href="#" class="footer-social"><i class='bx bxl-instagram'></i></a>
-                <a href="#" class="footer-social"><i class='bx bxl-facebook'></i></a>
-                <a href="#" class="footer-social"><i class='bx bxl-twitter'></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="main.js"></script>
-</body>
-</html>
+<div class="scroller">
+      <svg
+        class="scroller__bar bar"
+        viewBox="0 0 56 56"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path class="bar__thumb" fill="none" stroke-linecap="round" />
+        <path class="bar__track" fill="none" stroke-linecap="round" />
+      </svg>
+      <div>
+        <header>
+          <div>
+            <h1>023: curved scroller.</h1>
+            <p>Jhey Tompkins.</p>
+          </div>
+          <img src="https://picsum.photos/1280/720?random=12" alt="" />
+        </header>
+        <main>
+          <p>
+            Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Suscipit
+            in voluptatum, ducimus labore iste consectetur laboriosam officiis
+            aliquid similique reprehenderit, consequatur distinctio consequuntur
+            nam magnam blanditiis reiciendis eligendi laudantium a.
+          </p>
+          <p>
+            Dignissimos, nisi tenetur doloremque esse cum amet delectus
+            cupiditate natus quo illum quisquam perspiciatis ipsa maiores aut
+            soluta, facilis sunt rem eius. Alias, illum, cumque. Temporibus
+            doloremque praesentium in, consectetur.
+          </p>
+          <p>
+            Molestias voluptas architecto atque maiores, laboriosam, dolorem
+            commodi autem, id, ipsa praesentium rerum inventore! Optio maiores
+            nulla impedit, sapiente similique, voluptas placeat hic quas dicta a
+            voluptate minima alias aliquam?
+          </p>
+          <img src="https://picsum.photos/1280/720?random=48" alt="" />
+          <p>
+            Suscipit repudiandae, consectetur ratione quo, ipsa inventore
+            doloremque quibusdam sit iusto, obcaecati natus! Tempore, tenetur
+            culpa, mollitia consequuntur necessitatibus minima aliquid in
+            recusandae, exercitationem nulla voluptates atque quaerat,
+            doloremque illum.
+          </p>
+          <p>
+            Quibusdam quas, soluta quisquam nobis porro odio sit, maxime libero,
+            optio cumque, sint! Enim, atque, velit. Iste quisquam minus deleniti
+            quasi saepe! Saepe assumenda iste accusantium rem, sunt repudiandae
+            quae!
+          </p>
+          <p>
+            Mollitia quod fuga ex, consequatur saepe. Id laboriosam aspernatur
+            iusto unde quo. Optio molestiae maxime officia blanditiis voluptate,
+            quasi impedit aperiam corrupti nihil sit doloremque dolorem harum
+            necessitatibus expedita laboriosam.
+          </p>
+          <p>
+            Deleniti molestiae maxime ullam officia natus, eaque nisi numquam,
+            aliquam sapiente doloribus atque obcaecati illum vitae modi labore,
+            eligendi hic illo earum doloremque. Deserunt ut aliquam a aliquid,
+            dolores, magni.
+          </p>
+          <img src="https://picsum.photos/1280/720?random=36" alt="" />
+          <p>
+            Nesciunt dolor fugiat excepturi sunt molestias quis quam
+            consequatur, ea, eos officiis? Veniam totam, quas quasi eos
+            quibusdam, dolorem deleniti minus aperiam, nobis sapiente sit,
+            necessitatibus delectus quidem. Voluptate, nemo!
+          </p>
+          <p>
+            Qui fugit rerum harum, odio eos esse dicta dolore atque itaque
+            voluptatem, doloribus ullam tempora quidem, accusantium quae,
+            incidunt natus error fuga inventore expedita autem veniam in sequi
+            iure. Officia.
+          </p>
+          <p>
+            Ab mollitia, illum. Iusto quam enim, in sapiente sed impedit
+            nesciunt pariatur delectus asperiores officia hic ratione quasi eum
+            quidem facere quaerat ducimus dolor totam omnis itaque sequi
+            expedita optio?
+          </p>
+          <p>Find out how to do things like this and more by subscribing.</p>
+        </main>
+        <footer>
+          <p>The Craft of UI&nbsp;&copy;</p>
+        </footer>
+      </div>
+      <style id="scroller-frames"></style>
+    </div>
+    <a
+      class="bear-link"
+      href="https://twitter.com/intent/follow?screen_name=jh3yy"
+      target="_blank"
+      rel="noreferrer noopener"
+    >
+      <svg
+        class="w-9"
+        viewBox="0 0 969 955"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="161.191"
+          cy="320.191"
+          r="133.191"
+          stroke="currentColor"
+          stroke-width="20"
+        ></circle>
+        <circle
+          cx="806.809"
+          cy="320.191"
+          r="133.191"
+          stroke="currentColor"
+          stroke-width="20"
+        ></circle>
+        <circle
+          cx="695.019"
+          cy="587.733"
+          r="31.4016"
+          fill="currentColor"
+        ></circle>
+        <circle
+          cx="272.981"
+          cy="587.733"
+          r="31.4016"
+          fill="currentColor"
+        ></circle>
+        <path
+          d="M564.388 712.083C564.388 743.994 526.035 779.911 483.372 779.911C440.709 779.911 402.356 743.994 402.356 712.083C402.356 680.173 440.709 664.353 483.372 664.353C526.035 664.353 564.388 680.173 564.388 712.083Z"
+          fill="currentColor"
+        ></path>
+        <rect
+          x="310.42"
+          y="448.31"
+          width="343.468"
+          height="51.4986"
+          fill="#FF1E1E"
+        ></rect>
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M745.643 288.24C815.368 344.185 854.539 432.623 854.539 511.741H614.938V454.652C614.938 433.113 597.477 415.652 575.938 415.652H388.37C366.831 415.652 349.37 433.113 349.37 454.652V511.741L110.949 511.741C110.949 432.623 150.12 344.185 219.845 288.24C289.57 232.295 384.138 200.865 482.744 200.865C581.35 200.865 675.918 232.295 745.643 288.24Z"
+          fill="currentColor"
+        ></path>
+      </svg>
+    </a>
