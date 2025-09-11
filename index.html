@@ -1,249 +1,304 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <title>Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    /* General Reset */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
- 
-    body {
-      font-family: system-ui, sans-serif;
-      background: #fff;
-      color: #111;
-      scroll-behavior: smooth;
-      line-height: 1.6;
-    }
- 
-    /* Section styling */
-    section {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 60px 20px;
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-    }
- 
-    h1, h2 {
-      font-weight: 700;
-      font-size: 2.5rem;
-      background: linear-gradient(90deg, #ff6a00, #ee0979, #7f00ff, #00c6ff, #00ff87);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-size: 300% 300%;
-      animation: gradientMove 6s linear infinite;
-    }
- 
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
- 
-    p, li {
-      color: #444;
-      line-height: 1.6;
-      font-size: 1rem;
-    }
- 
-    ul {
-      list-style: none;
-      padding: 0;
-    }
- 
-    /* Navbar styling */
-    nav {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      width: 95%;
-      max-width: 700px;
-      padding: 12px 18px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px) saturate(150%);
-      -webkit-backdrop-filter: blur(12px) saturate(150%);
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-      z-index: 1000;
-    }
- 
-    .nav-btn {
-      flex: 1;
-      text-align: center;
-      font-size: 13px;
-      font-weight: 500;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      color: #333;
-      text-decoration: none;
-    }
- 
-    .nav-btn i {
-      font-size: 22px;
-      display: block;
-      margin-bottom: 4px;
-      background: linear-gradient(45deg, #ff6a00, #ee0979, #7f00ff, #00c6ff, #00ff87);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: gradientMove 6s linear infinite;
-      background-size: 300% 300%;
-      transition: transform 0.2s ease;
-    }
- 
-    .nav-btn:hover i {
-      transform: scale(1.2);
-    }
- 
-    .nav-btn.active span {
-      background: linear-gradient(90deg, #ff6a00, #ee0979, #7f00ff, #00c6ff, #00ff87);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 600;
-    }
- 
-    /* Responsive adjustments */
-    @media (max-width: 900px) {
-      h1, h2 { font-size: 2rem; }
-      p, li { font-size: 0.95rem; }
-      nav { width: 98%; padding: 10px 15px; }
-    }
- 
-    @media (max-width: 600px) {
-      h1, h2 { font-size: 1.6rem; }
-      p, li { font-size: 0.9rem; }
-      .nav-btn { font-size: 0; }
-      .nav-btn i { font-size: 24px; margin-bottom: 0; }
-    }
- 
-    @media (max-width: 400px) {
-      section { padding: 40px 15px; }
-      h1, h2 { font-size: 1.4rem; }
-    }
- 
-  </style>
+    <meta charset="utf-8" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* General Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: #fff;
+            color: #111;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        /* Section styling */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        h1,
+        h2 {
+            font-weight: 700;
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #ff6a00, #ee0979, #7f00ff, #00c6ff, #00ff87);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 300% 300%;
+            animation: gradientMove 6s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        p,
+        li {
+            color: #444;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* Navbar styling */
+        nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 95%;
+            max-width: 700px;
+            padding: 12px 18px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px) saturate(150%);
+            -webkit-backdrop-filter: blur(12px) saturate(150%);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            flex: 1;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 500;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .nav-btn i {
+            font-size: 22px;
+            display: block;
+            margin-bottom: 4px;
+            background: linear-gradient(45deg, #ff6a00, #ee0979, #7f00ff, #00c6ff, #00ff87);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientMove 6s linear infinite;
+            background-size: 300% 300%;
+            transition: transform 0.2s ease;
+        }
+
+        .nav-btn:hover i {
+            transform: scale(1.2);
+        }
+
+        .nav-btn.active span {
+            background: linear-gradient(90deg, #ff6a00, #ee0979, #7f00ff, #00c6ff, #00ff87);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            h1,
+            h2 {
+                font-size: 2rem;
+            }
+
+            p,
+            li {
+                font-size: 0.95rem;
+            }
+
+            nav {
+                width: 98%;
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1,
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            p,
+            li {
+                font-size: 0.9rem;
+            }
+
+            .nav-btn {
+                font-size: 0;
+            }
+
+            .nav-btn i {
+                font-size: 24px;
+                margin-bottom: 0;
+            }
+        }
+
+        @media (max-width: 400px) {
+            section {
+                padding: 40px 15px;
+            }
+
+            h1,
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+
+        #contact a {
+            transition: transform 0.2s ease;
+        }
+
+        #contact a:hover {
+            transform: scale(1.3);
+        }
+    </style>
 </head>
+
 <body>
- 
-  <!-- Sections -->
-  <section id="home">
-    <h1>Ganapathyram Nandhagopal</h1>
-    <p>ERP Functional Consultant / Business Analyst</p>
-  </section>
- 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I am an ERP Functional Consultant and Business Analyst with expertise in Oracle, OFBiz, and CREST ERP implementations.</p>
-  </section>
- 
-  <section id="services">
-    <h2>Services</h2>
-    <ul>
-      <li>ERP Implementation & Consulting</li>
-      <li>Business Process Analysis</li>
-      <li>Custom ERP Module Development</li>
-      <li>Integration & Reporting Solutions</li>
-    </ul>
-  </section>
- 
-  <section id="clients">
-    <h2>Clients</h2>
-    <ul>
-      <li>RNG Projects Co.</li>
-      <li>Global ERP Solutions</li>
-      <li>Enterprise Systems Ltd.</li>
-    </ul>
-  </section>
- 
-  <section id="blog">
-    <h2>Blog</h2>
-    <article>
-      <h3>ERP Implementation Best Practices</h3>
-      <p>Implementing ERP successfully requires proper planning, requirement gathering, and phased rollouts.</p>
-    </article>
-    <article>
-      <h3>Future of ERP</h3>
-      <p>Cloud ERP systems are growing rapidly, focusing on scalability, AI, and automation.</p>
-    </article>
-  </section>
- 
-  <section id="contact">
-  <h2>Contact</h2>
-  <div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-top: 20px;">
-    <a href="tel:+919876543210" style="color: #25d366;" target="_blank">
-      <i class="fas fa-phone fa-2x"></i>
-    </a>
-    <a href="https://wa.me/919876543210" style="color: #25d366;" target="_blank">
-      <i class="fab fa-whatsapp fa-2x"></i>
-    </a>
-    <a href="mailto:ganapathy@example.com" style="color: #EA4335;" target="_blank">
-      <i class="fas fa-envelope fa-2x"></i>
-    </a>
-    <a href="https://www.linkedin.com/in/ganapathy-nandhagopal" style="color: #0077b5;" target="_blank">
-      <i class="fab fa-linkedin fa-2x"></i>
-    </a>
-    <a href="https://calendly.com/ganapathy-nandhagopal" style="color: #00a2ff;" target="_blank">
-      <i class="fas fa-calendar-check fa-2x"></i>
-    </a>
-  </div>
-</section>
- 
-<style>
-  #contact a {
-    transition: transform 0.2s ease;
-  }
-  #contact a:hover {
-    transform: scale(1.3);
-  }
-</style>
- 
- 
-  <!-- Navbar -->
-  <nav>
-    <a href="#home" class="nav-btn active"><i class="fas fa-home"></i><span>Home</span></a>
-    <a href="#about" class="nav-btn"><i class="fas fa-user"></i><span>About</span></a>
-    <a href="#services" class="nav-btn"><i class="fas fa-cogs"></i><span>Services</span></a>
-    <a href="#clients" class="nav-btn"><i class="fas fa-handshake"></i><span>Clients</span></a>
-    <a href="#blog" class="nav-btn"><i class="fas fa-blog"></i><span>Blog</span></a>
-    <a href="#contact" class="nav-btn"><i class="fas fa-envelope"></i><span>Contact</span></a>
-  </nav>
- 
-  <script>
-    // Highlight active nav on scroll
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".nav-btn");
- 
-    window.addEventListener("scroll", () => {
-      let current = "";
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 80;
-        if (pageYOffset >= sectionTop) {
-          current = section.getAttribute("id");
-        }
-      });
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + current) {
-          link.classList.add("active");
-        }
-      });
-    });
-  </script>
- 
+
+    <!-- Sections -->
+    <section id="home">
+        <h1>Ganapathyram Nandhagopal</h1>
+        <p>ERP Functional Consultant / Business Analyst</p>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am an ERP Functional Consultant and Business Analyst with expertise in Oracle, OFBiz, and CREST ERP implementations.</p>
+    </section>
+
+    <section id="services">
+        <h2>Services</h2>
+        <ul>
+            <li>ERP Implementation & Consulting</li>
+            <li>Business Process Analysis</li>
+            <li>Custom ERP Module Development</li>
+            <li>Integration & Reporting Solutions</li>
+        </ul>
+    </section>
+
+    <section id="clients">
+        <h2>Clients</h2>
+        <ul>
+            <li>RNG Projects Co.</li>
+            <li>Global ERP Solutions</li>
+            <li>Enterprise Systems Ltd.</li>
+        </ul>
+    </section>
+
+    <section id="blog">
+        <h2>Blog</h2>
+        <article>
+            <h3>ERP Implementation Best Practices</h3>
+            <p>Implementing ERP successfully requires proper planning, requirement gathering, and phased rollouts.</p>
+        </article>
+        <article>
+            <h3>Future of ERP</h3>
+            <p>Cloud ERP systems are growing rapidly, focusing on scalability, AI, and automation.</p>
+        </article>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-top: 20px;">
+            <a href="tel:+919876543210" style="color: #25d366;" target="_blank">
+                <i class="fas fa-phone fa-2x"></i>
+            </a>
+            <a href="https://wa.me/919876543210" style="color: #25d366;" target="_blank">
+                <i class="fab fa-whatsapp fa-2x"></i>
+            </a>
+            <a href="mailto:ganapathy@example.com" style="color: #EA4335;" target="_blank">
+                <i class="fas fa-envelope fa-2x"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/ganapathy-nandhagopal" style="color: #0077b5;" target="_blank">
+                <i class="fab fa-linkedin fa-2x"></i>
+            </a>
+            <a href="https://calendly.com/ganapathy-nandhagopal" style="color: #00a2ff;" target="_blank">
+                <i class="fas fa-calendar-check fa-2x"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="#home" class="nav-btn active">
+            <i class="fas fa-home"></i><span>Home</span>
+        </a>
+        <a href="#about" class="nav-btn">
+            <i class="fas fa-user"></i><span>About</span>
+        </a>
+        <a href="#services" class="nav-btn">
+            <i class="fas fa-cogs"></i><span>Services</span>
+        </a>
+        <a href="#clients" class="nav-btn">
+            <i class="fas fa-handshake"></i><span>Clients</span>
+        </a>
+        <a href="#blog" class="nav-btn">
+            <i class="fas fa-blog"></i><span>Blog</span>
+        </a>
+        <a href="#contact" class="nav-btn">
+            <i class="fas fa-envelope"></i><span>Contact</span>
+        </a>
+    </nav>
+
+    <script>
+        // Highlight active nav on scroll
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-btn");
+
+        window.addEventListener("scroll", () => {
+            let current = "";
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 80;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === "#" + current) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
