@@ -192,10 +192,12 @@
 <body>
 
     <!-- Sections -->
-    <section id="home">
-        <h1>Ganapathyram Nandhagopal</h1>
-        <p>ERP Functional Consultant / Business Analyst</p>
-    </section>
+    <section id="home" style="display: flex; flex-direction: column; align-items: center; padding: 60px 20px; text-align: center;">
+    <img src="images/profile-photo.jpg" alt="Ganapathyram Nandhagopal" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 4px solid #00c6ff;">
+    <h1>Ganapathyram Nandhagopal</h1>
+    <p>ERP Functional Consultant / Business Analyst</p>
+</section>
+
 
     <section id="about">
         <h2>About Me</h2>
@@ -222,16 +224,125 @@
     </section>
 
     <section id="blog">
-        <h2>Blog</h2>
-        <article>
-            <h3>ERP Implementation Best Practices</h3>
-            <p>Implementing ERP successfully requires proper planning, requirement gathering, and phased rollouts.</p>
-        </article>
-        <article>
-            <h3>Future of ERP</h3>
-            <p>Cloud ERP systems are growing rapidly, focusing on scalability, AI, and automation.</p>
-        </article>
-    </section>
+    <h2>Blog</h2>
+
+    <div class="blog-cards-container">
+        <div class="blog-cards">
+
+            <a href="blog-post-1.html" class="blog-card">
+                <div class="card-border">
+                    <div class="card-content">
+                        <img src="images/erp-implementation.jpg" alt="ERP Implementation Best Practices">
+                        <h3>ERP Implementation Best Practices</h3>
+                        <p>Proper planning, requirement gathering, and phased rollouts for ERP success.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="blog-post-2.html" class="blog-card">
+                <div class="card-border">
+                    <div class="card-content">
+                        <img src="images/future-of-erp.jpg" alt="Future of ERP">
+                        <h3>Future of ERP</h3>
+                        <p>Cloud ERP systems focusing on scalability, AI, and automation are growing rapidly.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="blog-post-3.html" class="blog-card">
+                <div class="card-border">
+                    <div class="card-content">
+                        <img src="images/data-analytics-erp.jpg" alt="Leveraging Data Analytics in ERP">
+                        <h3>Leveraging Data Analytics in ERP</h3>
+                        <p>Use data analytics in ERP systems for data-driven decisions and improved forecasting.</p>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <style>
+        #blog {
+            padding: 60px 20px;
+            text-align: center;
+            background: #fff;
+        }
+
+        #blog h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .blog-cards-container {
+            overflow-x: auto;
+            padding: 20px 0;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .blog-cards {
+            display: flex;
+            gap: 20px;
+        }
+
+        .blog-card {
+            min-width: 300px;
+            flex: 0 0 auto;
+            text-decoration: none;
+        }
+
+        .card-border {
+            padding: 3px; /* Border thickness */
+            border-radius: 12px;
+            background: linear-gradient(90deg, #ff6a00, #ee0979, #7f00ff, #00c6ff, #00ff87);
+            background-size: 300% 300%;
+            animation: gradientMove 6s linear infinite;
+        }
+
+        .card-content {
+            background: #fff;
+            border-radius: 9px; /* Slightly smaller radius */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-content img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content h3 {
+            font-size: 1.2rem;
+            margin: 16px;
+            color: #333;
+        }
+
+        .card-content p {
+            font-size: 0.95rem;
+            margin: 0 16px 16px;
+            color: #555;
+        }
+
+        .blog-card:hover .card-border {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .blog-cards-container::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</section>
+
 
     <section id="contact">
         <h2>Contact</h2>
