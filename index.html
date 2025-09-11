@@ -148,36 +148,42 @@
         }
 
         @media (max-width: 600px) {
-            h1,
-            h2 {
-                font-size: 1.6rem;
-            }
+    h1,
+    h2 {
+        font-size: 1.8rem; /* was 1.6rem */
+    }
 
-            p,
-            li {
-                font-size: 0.9rem;
-            }
+    p,
+    li {
+        font-size: 1rem; /* was 0.9rem */
+    }
 
-            .nav-btn {
-                font-size: 0;
-            }
+    .nav-btn {
+        font-size: 12px; /* was 0, now visible */
+    }
 
-            .nav-btn i {
-                font-size: 24px;
-                margin-bottom: 0;
-            }
-        }
+    .nav-btn i {
+        font-size: 26px; /* was 24px */
+        margin-bottom: 2px;
+    }
+}
 
-        @media (max-width: 400px) {
-            section {
-                padding: 40px 15px;
-            }
+@media (max-width: 400px) {
+    section {
+        padding: 50px 15px; /* slightly more padding */
+    }
 
-            h1,
-            h2 {
-                font-size: 1.4rem;
-            }
-        }
+    h1,
+    h2 {
+        font-size: 1.6rem; /* was 1.4rem */
+    }
+
+    p,
+    li {
+        font-size: 0.95rem; /* slightly bigger */
+    }
+}
+
 
         #contact a {
             transition: transform 0.2s ease;
